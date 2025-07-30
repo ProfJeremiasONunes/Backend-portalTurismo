@@ -4,7 +4,7 @@ require('dotenv').config();
 // Importa o framework Express para criar a aplicação web/API
 const express = require('express');
 
-// Importa a instância do Sequelize configurada para conexão com o banco MySQL
+// Importa a instância do Sequelize configurada para conexão com o banco PostgreSQL
 const sequelize = require('./config/db');
 
 // Importa o middleware CORS para configurar permissões de acesso entre domínios
@@ -45,10 +45,10 @@ app.use('/api/auth', authRoutes);
 // Porta definida no arquivo .env onde o servidor vai escutar as requisições
 const PORT = process.env.PORT;
 
-// Primeiro tenta conectar ao banco de dados MySQL usando Sequelize
+// Primeiro tenta conectar ao banco de dados PostgreSQL usando Sequelize
 sequelize.authenticate()
   .then(() => {
-    console.log('🟢 Conectado ao banco MySQL!');
+    console.log('🟢 Conectado ao banco PostgreSQL!');
 
     // Sincroniza os modelos Sequelize com o banco (cria tabelas, etc)
     return sequelize.sync();
